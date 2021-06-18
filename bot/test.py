@@ -15,7 +15,7 @@ model = tf.keras.models.load_model("./trained_model")
 client = Bot(command_prefix = ["!"])
 
 tf.saved_model.LoadOptions(
-    experimental_io_device = '/job:localhost'
+    experimental_io_device = '/physical_device:CPU'
 )
 
 allowed_channels = (854627368643592207, 855306527484542976, 855309516580061207)
