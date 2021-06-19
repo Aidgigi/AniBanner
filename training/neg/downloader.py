@@ -26,15 +26,11 @@ def get_and_write(url):
             img = img.convert('RGB')
 
         img = img.resize((224, 224), Image.ANTIALIAS)
-
-        os.remove(fname)
     
         img.save(url[1] + '.jpg', 'JPEG', quality = 100)
 
     except Exception as e:
         print(e)
-
-        os.remove(fname)
 
     with open("negatives_downloaded", 'a') as f:
         f.write(f"{url[0]}\n")
