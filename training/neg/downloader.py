@@ -1,6 +1,6 @@
 import requests
 from concurrent.futures import ThreadPoolExecutor
-import os
+import os, io
 from tqdm import tqdm
 from PIL import Image
 
@@ -16,11 +16,10 @@ def get_and_write(url):
     
     fname = f"images/{url[1]}.{url_ending}"
 
-    with open(fname, 'wb') as f:
-        f.write(res.content)
+    fob = io.BytesIO(res.content)
 
     try:
-        img = Image.open(fname)
+        img = Image.open(fob)
 
         if img.mode.lower() != 'rgb':
             print(f"Converted: {url[1]}")
@@ -30,7 +29,7 @@ def get_and_write(url):
 
         os.remove(fname)
     
-        img.save(fname.split('.')[0] + '.jpg', 'JPEG', quality = 100)
+        img.save(url[1] + '.jpg', 'JPEG', quality = 100)
 
     except Exception as e:
         print(Exception)
@@ -50,5 +49,5 @@ url_pack = []
 for url in urls:
     url_pack.append([url, len(url_pack) + 1])
 
-with ThreadPoolExecutor(max_workers = 60) as pool:
+with ThreadPoolExecutor(max_workers = 50) as pool:
     tqdm(pool.map(get_and_write, url_pack))
