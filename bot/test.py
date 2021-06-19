@@ -18,7 +18,7 @@ tf.saved_model.LoadOptions(
     experimental_io_device = '/physical_device:CPU'
 )
 
-allowed_channels = (854627368643592207, 855306527484542976, 855309516580061207)
+allowed_channels = (854627368643592207, 855306527484542976, 855309516580061207, 585306582133374994)
 
 def auto_uuid():
     return str(base64.urlsafe_b64encode(uuid.uuid1().bytes)).replace('=', '')[:-1:][2::]

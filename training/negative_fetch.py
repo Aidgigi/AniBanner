@@ -7,11 +7,16 @@ import asyncio
 arg_pack = sys.argv[1:]
 
 # instantiating the client
-client = Bot(command_prefix=["!"], self_bot = True)
+client = Bot(command_prefix=["!"])
 
 ran = False
 
 attachments = []
+
+"""@client.event
+async def on_ready():
+    channel = client.get_channel("477962067677020171")
+    print(channel.name)"""
 
 @client.event
 async def on_message(ctx):
@@ -33,11 +38,6 @@ async def on_message(ctx):
             
                 attachments = []
         
-            
 
-            
-
-
-
-client.run(arg_pack[0], bot = False)
+client.run(arg_pack[0])
 
