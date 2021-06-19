@@ -7,7 +7,7 @@ import asyncio
 arg_pack = sys.argv[1:]
 
 # instantiating the client
-client = Bot(command_prefix=["!"])
+client = Bot(command_prefix=["!"], self_bot = True)
 
 ran = False
 
@@ -43,5 +43,5 @@ async def on_message(ctx):
                 attachments = []
         
 
-client.run(arg_pack[0])
+client.run(arg_pack[0], bot = False)
 
