@@ -27,7 +27,7 @@ def get_and_write(url):
 
         img = img.resize((224, 224), Image.ANTIALIAS)
     
-        img.save(f"{url[1]}.jpg", 'JPEG', quality = 100)
+        img.save(f"images/{url[1]}.jpg", 'JPEG', quality = 100)
 
     except Exception as e:
         print(e)
