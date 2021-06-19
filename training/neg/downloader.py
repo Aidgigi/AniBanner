@@ -32,7 +32,7 @@ def get_and_write(url):
         img.save(url[1] + '.jpg', 'JPEG', quality = 100)
 
     except Exception as e:
-        print(Exception)
+        print(e)
 
         os.remove(fname)
 
