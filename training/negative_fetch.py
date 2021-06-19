@@ -24,11 +24,16 @@ async def on_message(ctx):
     print("1")
     if ctx.author.name == "Aidgigi" and ctx.channel.name == "off-topic" and not ran:
         ran = True
+        num_found = 0
 
         async for message in ctx.channel.history(limit = None):
+            if num_found >= arg_pack[1]:
+                break
+
             if (atts := message.attachments):
                 print(len(attachments))
                 for att in atts:
+                    num_found += 1
                     attachments.append(att.url)
                 
             if len(attachments) % 50 == 0:
