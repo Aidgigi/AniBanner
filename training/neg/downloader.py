@@ -51,4 +51,4 @@ for url in urls:
     url_pack.append([url, len(url_pack) + 1])
 
 with ThreadPoolExecutor(max_workers = 60) as pool:
-    pool.map(get_and_write, url_pack)
+    tqdm(pool.map(get_and_write, url_pack))
