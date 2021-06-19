@@ -36,7 +36,7 @@ async def on_message(ctx):
                 
             if len(attachments) % 50 == 0:
                 print(num_found)
-                with open(arg_pack[1], "a") as f:
+                with open(arg_pack[2], "a") as f:
                     for att in attachments:
                         f.write(f"{att}\n")
             
