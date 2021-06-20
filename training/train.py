@@ -4,7 +4,7 @@ import numpy as np
 from tensorflow.keras import layers
 from tensorflow.keras.models import Sequential
 
-from tensorflow.python.compiler.mlcompute import mlcompute
+#from tensorflow.python.compiler.mlcompute import mlcompute
 from tensorflow.python.training.tracking import base
 
 image_size = (224, 224)
