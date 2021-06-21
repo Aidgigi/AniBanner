@@ -13,7 +13,7 @@ b_size = 32
 tds = tf.keras.preprocessing.image_dataset_from_directory(
     shuffle = True,
     directory = "set",
-    validation_split = 0.2,
+    validation_split = 0.05,
     subset = "training",
     seed = 123,
     image_size = image_size,
@@ -23,7 +23,7 @@ tds = tf.keras.preprocessing.image_dataset_from_directory(
 vds = tf.keras.preprocessing.image_dataset_from_directory(
     shuffle = True,
     directory = "set",
-    validation_split = 0.2,
+    validation_split = 0.05,
     subset = "validation",
     seed = 123,
     image_size = image_size,
@@ -36,6 +36,9 @@ data_augmentation = tf.keras.Sequential([
   tf.keras.layers.experimental.preprocessing.RandomRotation(0.2),
 ])
 """
+
+tds = tds.prefetch(buffer_size = tf.data.AUTOTUNE)
+vds = vds.prefetch(buffer_size = tf.data.AUTOTUNE)
 
 preprocess_input = tf.keras.applications.mobilenet_v2.preprocess_input
 rescale = tf.keras.layers.experimental.preprocessing.Rescaling(1./127.5, offset= -1)
